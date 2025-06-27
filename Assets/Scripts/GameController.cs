@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -14,11 +13,5 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
-    }
-
-    public void OnButtonClick()
-    {
-        // TODO loadScene("Experience");
-        Debug.Log("Button clicked!");
     }
 }
