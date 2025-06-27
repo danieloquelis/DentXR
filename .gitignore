@@ -1,0 +1,59 @@
+# Temporary build and cache folders
+.utmp/
+Temp/
+obj/
+Build/
+Builds/
+Library/
+Logs/
+*.apk
+
+# CMake and Ninja build artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build.ninja
+.ninja_deps
+.ninja_log
+compile_commands.json
+*.cmake
+*.o
+*.a
+*.so
+*.bin
+*.json
+
+# Burst temporary files
+MRStylusSandbox_BurstDebugInformation_DoNotShip/
+
+# Crash reports
+mono_crash.*
+
+# Unity specific (if not already added)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# OS and editor stuff
+.DS_Store
+Thumbs.db
+
+# Ignore Unity temp assemblies
+TempAssembly.dll
+
+# Rider
+.idea/
