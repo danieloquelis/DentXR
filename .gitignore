@@ -85,3 +85,5 @@ crashlytics-build.properties
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
 
 .vscode/*
+.idea/*
+MRStylusSandbox_BurstDebugInformation_DoNotShip/*
