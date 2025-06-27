@@ -1,17 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class PanelScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Update()
+    void Start()
     {
-        Transform cameraTransform = Camera.main.transform;
+        StartCoroutine(PositionPanelCoroutine());
 
-        if (cameraTransform == null)
-        {
-            Debug.LogWarning("Main Camera not found.");
-            return;
-        }
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    IEnumerator PositionPanelCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        Transform cameraTransform = Camera.main.transform;
 
         Vector3 userPosition = cameraTransform.position;
 
