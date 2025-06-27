@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140790592}
   m_Layer: 0
-  m_Name: Airrotor
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,15 +143,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140790591}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0737}
+  m_LocalRotation: {x: -0, y: 0.053219352, z: -0, w: 0.99858284}
+  m_LocalPosition: {x: -0.0019, y: 0, z: -0.07352874}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6413569636099796893}
   - {fileID: 1582877785}
   m_Father: {fileID: 715061837}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.101, z: 0}
 --- !u!1 &220727769
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 715061839}
   - component: {fileID: 715061838}
   m_Layer: 0
-  m_Name: MX Ink Handler
+  m_Name: DentalAirRotor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -728,6 +728,7 @@ MonoBehaviour:
   hapticClickDuration: 0.05
   hapticClickAmplitude: 0.9
   hapticClickMinThreshold: 0.9
+  offsetTip: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fd5897dba61142d595b2d392a956e8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6790160926894396129, guid: 2fd5897dba61142d595b2d392a956e8e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -976,13 +977,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582877784}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0186, y: -0, z: 0.0405}
+  m_LocalRotation: {x: 0, y: -0.043619405, z: 0, w: 0.9990483}
+  m_LocalPosition: {x: -0.018199999, y: 0, z: 0.042899974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 140790592}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -5, z: 0}
 --- !u!1 &1664486698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,13 +1640,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929625762474095911}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.09814249, z: -0, w: 0.99517244}
-  m_LocalPosition: {x: -0.0017, y: 0, z: -0.0033}
+  m_LocalRotation: {x: 0.09373393, y: -0, z: 0.9955973, w: 0}
+  m_LocalPosition: {x: 0.0024, y: -0.00036782504, z: -0.0003399402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 140790592}
-  m_LocalEulerAnglesHint: {x: 0, y: -11.264, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 10.757, z: 180}
 --- !u!33 &7975391220387717176
 MeshFilter:
   m_ObjectHideFlags: 0

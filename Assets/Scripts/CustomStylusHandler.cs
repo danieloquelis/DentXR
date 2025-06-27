@@ -6,6 +6,7 @@ public class CustomStylusHandler : MonoBehaviour
     [SerializeField] private float hapticClickDuration = 0.05f;
     [SerializeField] private float hapticClickAmplitude = 0.9f;
     [SerializeField] private float hapticClickMinThreshold = 0.9f;
+    [SerializeField] private Transform offsetTip;
 
     private StylusInputs _stylus;
     public StylusInputs Stylus => _stylus;
@@ -38,18 +39,32 @@ public class CustomStylusHandler : MonoBehaviour
     {
         var leftDevice = OVRPlugin.GetCurrentInteractionProfileName(OVRPlugin.Hand.HandLeft);
         var rightDevice = OVRPlugin.GetCurrentInteractionProfileName(OVRPlugin.Hand.HandRight);
-        
+    
         _stylus.isActive = leftDevice.Contains("logitech") || rightDevice.Contains("logitech");
         _stylus.isOnRightHand = rightDevice.Contains("logitech");
-        
+    
         var poseAction = _stylus.isOnRightHand ? InkPoseRight : InkPoseLeft;
 
         if (!OVRPlugin.GetActionStatePose(poseAction, out var handPose)) return;
-        transform.localPosition = handPose.Position.FromFlippedZVector3f();
-        transform.localRotation = handPose.Orientation.FromFlippedZQuatf();
-        _stylus.inkingPose.position = transform.localPosition;
-        _stylus.inkingPose.rotation = transform.localRotation;
+
+        var rawPosition = handPose.Position.FromFlippedZVector3f();
+        var rawRotation = handPose.Orientation.FromFlippedZQuatf();
+
+        if (offsetTip)
+        {
+            transform.position = offsetTip.TransformPoint(rawPosition);
+            transform.rotation = offsetTip.rotation * rawRotation;
+        }
+        else
+        {
+            transform.localPosition = rawPosition;
+            transform.localRotation = rawRotation;
+        }
+
+        _stylus.inkingPose.position = transform.position;
+        _stylus.inkingPose.rotation = transform.rotation;
     }
+
 
     private void UpdateStylusInputs()
     {
