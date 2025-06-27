@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class CustomStylusHandler : MonoBehaviour
 {
-    [SerializeField] private float hapticClickDuration = 0.05f;
-    [SerializeField] private float hapticClickAmplitude = 0.9f;
-    [SerializeField] private float hapticClickMinThreshold = 0.9f;
+    //[SerializeField] private float hapticClickDuration = 0.05f;
+    //[SerializeField] private float hapticClickAmplitude = 0.9f;
     [SerializeField] private Transform offsetTip;
 
     private StylusInputs _stylus;
@@ -32,7 +31,6 @@ public class CustomStylusHandler : MonoBehaviour
         UpdateStylusPose();
         UpdateStylusInputs();
         CheckBooleanEvents();
-        GenerateHapticFeedback();
     }
 
     private void UpdateStylusPose()
@@ -122,24 +120,24 @@ public class CustomStylusHandler : MonoBehaviour
         _previousDockedValue = _stylus.docked;
     }
 
-    private void GenerateHapticFeedback()
-    {
-        var holdingHand = _stylus.isOnRightHand ? OVRPlugin.Hand.HandRight : OVRPlugin.Hand.HandLeft;
-        GenerateHapticClick(_stylus.tip_value, holdingHand);
-        GenerateHapticClick(_stylus.cluster_middle_value, holdingHand);
-    }
+    // private void GenerateHapticFeedback()
+    // {
+    //     var holdingHand = _stylus.isOnRightHand ? OVRPlugin.Hand.HandRight : OVRPlugin.Hand.HandLeft;
+    //     GenerateHapticClick(_stylus.tip_value, holdingHand);
+    //     GenerateHapticClick(_stylus.cluster_middle_value, holdingHand);
+    // }
 
-    private void GenerateHapticClick(float analogValue, OVRPlugin.Hand hand)
-    {
-        if (analogValue >= hapticClickMinThreshold)
-        {
-            TriggerHapticFeedback(hand);
-        }
-    }
+    // private void GenerateHapticClick(float analogValue, OVRPlugin.Hand hand)
+    // {
+    //     if (analogValue >= hapticClickMinThreshold)
+    //     {
+    //         TriggerHapticFeedback(hand);
+    //     }
+    // }
 
-    private void TriggerHapticFeedback(OVRPlugin.Hand hand)
-    {
-        OVRPlugin.TriggerVibrationAction(InkHapticPulse, hand, hapticClickDuration, hapticClickAmplitude);
-    }
+    // private void TriggerHapticFeedback(OVRPlugin.Hand hand)
+    // {
+    //     OVRPlugin.TriggerVibrationAction(InkHapticPulse, hand, hapticClickDuration, hapticClickAmplitude);
+    // }
 
 }

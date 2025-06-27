@@ -5,7 +5,8 @@ public class HapticsHandler : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private CustomStylusHandler stylusHandler;
-
+    [SerializeField] private DrillingController drillingController;
+    
     [Header("Audio")]
     [SerializeField] private AudioSource audioSourceA;
     [SerializeField] private AudioSource audioSourceB;
@@ -13,9 +14,6 @@ public class HapticsHandler : MonoBehaviour
     [SerializeField] private AudioClip loopClip;
     [SerializeField] private AudioClip rampDownClip;
     [SerializeField] private float loopOverlap = 0.05f;
-
-    [Header("Drill Pressure Threshold")]
-    [SerializeField] private float pressureThreshold = 0.5f;
 
     private bool _isLooping;
     private bool _wasAboveThreshold;
@@ -26,12 +24,12 @@ public class HapticsHandler : MonoBehaviour
     {
         var pressure = stylusHandler.Stylus.cluster_middle_value;
 
-        if (pressure >= pressureThreshold && !_wasAboveThreshold)
+        if (pressure >= drillingController.hapticClickMinThreshold && !_wasAboveThreshold)
         {
             PlayOnce(rampUpClip);
             Invoke(nameof(StartLoop), rampUpClip.length - loopOverlap);
         }
-        else if (pressure < pressureThreshold && _wasAboveThreshold)
+        else if (pressure < drillingController.hapticClickMinThreshold && _wasAboveThreshold)
         {
             StopLoop();
             PlayOnce(rampDownClip);
@@ -42,7 +40,7 @@ public class HapticsHandler : MonoBehaviour
             CrossfadeLoop();
         }
 
-        _wasAboveThreshold = pressure >= pressureThreshold;;
+        _wasAboveThreshold = pressure >= drillingController.hapticClickMinThreshold;;
     }
 
     private void PlayOnce(AudioClip clip)
@@ -59,6 +57,8 @@ public class HapticsHandler : MonoBehaviour
 
     private void StartLoop()
     {
+        if (!_wasAboveThreshold) return; // prevent late start
+
         _isLooping = true;
         _nextLoopTime = Time.time + loopClip.length - loopOverlap;
         CrossfadeLoop();
@@ -83,6 +83,7 @@ public class HapticsHandler : MonoBehaviour
     private void StopLoop()
     {
         _isLooping = false;
+        CancelInvoke(nameof(StartLoop)); // Prevent delayed loop if user released quickly
         audioSourceA.Stop();
         audioSourceB.Stop();
     }
