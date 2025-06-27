@@ -35,7 +35,7 @@ public class CustomLineDrawer : MonoBehaviour
 
     private void Awake()
     {
-        tipIndicator.material.color = lineColor;
+        //tipIndicator.material.color = lineColor;
         _cachedColor = lineColor;
         stylusHandler.OnFrontPressed += HandleFrontPressed;
         stylusHandler.OnFrontReleased += HandleFrontReleased;
