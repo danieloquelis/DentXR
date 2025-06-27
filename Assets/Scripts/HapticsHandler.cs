@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HapticsHandler : MonoBehaviour
@@ -16,39 +17,39 @@ public class HapticsHandler : MonoBehaviour
     [Header("Drill Pressure Threshold")]
     [SerializeField] private float pressureThreshold = 0.5f;
 
-    private bool isLooping;
-    private bool wasAboveThreshold;
-    private bool useA = true;
-    private float nextLoopTime;
+    private bool _isLooping;
+    private bool _wasAboveThreshold;
+    private bool _useA = true;
+    private float _nextLoopTime;
 
     private void Update()
     {
         var pressure = stylusHandler.Stylus.cluster_middle_value;
 
-        if (pressure >= pressureThreshold && !wasAboveThreshold)
+        if (pressure >= pressureThreshold && !_wasAboveThreshold)
         {
             PlayOnce(rampUpClip);
             Invoke(nameof(StartLoop), rampUpClip.length - loopOverlap);
         }
-        else if (pressure < pressureThreshold && wasAboveThreshold)
+        else if (pressure < pressureThreshold && _wasAboveThreshold)
         {
             StopLoop();
             PlayOnce(rampDownClip);
         }
 
-        if (isLooping && Time.time >= nextLoopTime)
+        if (_isLooping && Time.time >= _nextLoopTime)
         {
             CrossfadeLoop();
         }
 
-        wasAboveThreshold = pressure >= pressureThreshold;;
+        _wasAboveThreshold = pressure >= pressureThreshold;;
     }
 
     private void PlayOnce(AudioClip clip)
     {
-        if (clip == null) return;
+        if (!clip) return;
 
-        var activeSource = useA ? audioSourceA : audioSourceB;
+        var activeSource = _useA ? audioSourceA : audioSourceB;
         activeSource.Stop();
         activeSource.clip = clip;
         activeSource.loop = false;
@@ -58,38 +59,37 @@ public class HapticsHandler : MonoBehaviour
 
     private void StartLoop()
     {
-        isLooping = true;
-        nextLoopTime = Time.time + loopClip.length - loopOverlap;
+        _isLooping = true;
+        _nextLoopTime = Time.time + loopClip.length - loopOverlap;
         CrossfadeLoop();
     }
 
     private void CrossfadeLoop()
     {
-        var current = useA ? audioSourceA : audioSourceB;
-        var next = useA ? audioSourceB : audioSourceA;
+        var current = _useA ? audioSourceA : audioSourceB;
+        var next = _useA ? audioSourceB : audioSourceA;
 
         next.clip = loopClip;
         next.loop = false;
         next.volume = 0f;
         next.Play();
-        nextLoopTime = Time.time + loopClip.length - loopOverlap;
+        _nextLoopTime = Time.time + loopClip.length - loopOverlap;
 
-        // Optional: fade in the new source
         StartCoroutine(FadeIn(next, 0.1f));
 
-        useA = !useA;
+        _useA = !_useA;
     }
 
     private void StopLoop()
     {
-        isLooping = false;
+        _isLooping = false;
         audioSourceA.Stop();
         audioSourceB.Stop();
     }
 
-    private System.Collections.IEnumerator FadeIn(AudioSource source, float duration)
+    private static IEnumerator FadeIn(AudioSource source, float duration)
     {
-        float elapsed = 0f;
+        var elapsed = 0f;
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
