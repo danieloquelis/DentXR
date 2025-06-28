@@ -44,7 +44,7 @@ namespace DrillSystem
         /// <summary>
         /// Triggered when a part has been drilled and says if it's healthy or infected part
         /// </summary>
-        public static UnityAction<PieceType> OnPartDrilled
+        public static UnityAction<PieceType, GameObject> OnPartDrilled
         {
             get
             {
@@ -57,7 +57,7 @@ namespace DrillSystem
             }
         }
 
-        private UnityAction<PieceType> _OnPartDrilled;
+        private UnityAction<PieceType, GameObject> _OnPartDrilled;
 
         /// <summary>
         /// Triggered when the drilling system has started or ended
@@ -151,7 +151,7 @@ namespace DrillSystem
             if (!isActive) return;
 
             other.gameObject.SetActive(false);
-            _OnPartDrilled?.Invoke(PieceType.Healthy);
+            _OnPartDrilled?.Invoke(PieceType.Healthy, other);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace DrillSystem
             if (!isActive) return;
 
             other.gameObject.SetActive(false);
-            _OnPartDrilled?.Invoke(PieceType.Infected);
+            _OnPartDrilled?.Invoke(PieceType.Infected, other);
         }
 
         /// <summary>
