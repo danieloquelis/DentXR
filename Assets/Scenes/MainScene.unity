@@ -1230,7 +1230,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _hoverColorState:
-    Color: {r: 0, g: 0, b: 1, a: 1}
+    Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _selectColorState:
-    Color: {r: 0, g: 1, b: 0, a: 1}
+    Color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -5056,7 +5056,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _hoverColorState:
-    Color: {r: 0, g: 0, b: 1, a: 1}
+    Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -5083,7 +5083,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _selectColorState:
-    Color: {r: 0, g: 1, b: 0, a: 1}
+    Color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -7212,7 +7212,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _hoverColorState:
-    Color: {r: 0, g: 0, b: 1, a: 1}
+    Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -7239,7 +7239,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _selectColorState:
-    Color: {r: 0, g: 1, b: 0, a: 1}
+    Color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -8904,7 +8904,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _hoverColorState:
-    Color: {r: 0, g: 0, b: 1, a: 1}
+    Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -8931,7 +8931,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _selectColorState:
-    Color: {r: 0, g: 1, b: 0, a: 1}
+    Color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -10855,7 +10855,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _hoverColorState:
-    Color: {r: 0, g: 0, b: 1, a: 1}
+    Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
@@ -10882,7 +10882,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     ColorTime: 0.1
   _selectColorState:
-    Color: {r: 0, g: 1, b: 0, a: 1}
+    Color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     ColorCurve:
       serializedVersion: 2
       m_Curve:
