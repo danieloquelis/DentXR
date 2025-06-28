@@ -5,7 +5,7 @@ public class HapticsHandler : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private CustomStylusHandler stylusHandler;
-    [SerializeField] private DrillingController drillingController;
+    [SerializeField] private DrillingManager drillingManager;
     
     [Header("Audio")]
     [SerializeField] private AudioSource audioSourceA;
@@ -24,12 +24,12 @@ public class HapticsHandler : MonoBehaviour
     {
         var pressure = stylusHandler.Stylus.cluster_middle_value;
 
-        if (pressure >= drillingController.hapticClickMinThreshold && !_wasAboveThreshold)
+        if (pressure >= drillingManager.hapticClickMinThreshold && !_wasAboveThreshold)
         {
             PlayOnce(rampUpClip);
             Invoke(nameof(StartLoop), rampUpClip.length - loopOverlap);
         }
-        else if (pressure < drillingController.hapticClickMinThreshold && _wasAboveThreshold)
+        else if (pressure < drillingManager.hapticClickMinThreshold && _wasAboveThreshold)
         {
             StopLoop();
             PlayOnce(rampDownClip);
@@ -40,7 +40,7 @@ public class HapticsHandler : MonoBehaviour
             CrossfadeLoop();
         }
 
-        _wasAboveThreshold = pressure >= drillingController.hapticClickMinThreshold;;
+        _wasAboveThreshold = pressure >= drillingManager.hapticClickMinThreshold;;
     }
 
     private void PlayOnce(AudioClip clip)

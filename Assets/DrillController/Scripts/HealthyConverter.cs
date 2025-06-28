@@ -30,7 +30,8 @@ namespace DrillSystem
                 if (child.gameObject.GetComponent<MeshCollider>() == null)
                     child.gameObject.AddComponent<MeshCollider>();
 
-                child.GetComponent<MeshRenderer>().material = healthyMaterial;
+                // Uncomment if we need to add lit material to the tooth
+                //child.GetComponent<MeshRenderer>().material = healthyMaterial;
             }
 
             Debug.Log("Objects converted");
