@@ -4,42 +4,61 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 
-public class HealthyConverter : MonoBehaviour
+namespace DrillSystem
 {
-    [SerializeField]
-    private GameObject parent;
-
-    [SerializeField]
-    private int healthyLayer;
-
-    public void Convert()
+    public class HealthyConverter : MonoBehaviour
     {
-        foreach(Transform child in parent.transform)
+        [SerializeField]
+        [Tooltip("The parent where the tooth pieces are placed")]
+        private GameObject parent;
+
+        [SerializeField]
+        [Tooltip("The layer of the healthy pieces")]
+        private int healthyLayer;
+
+        [SerializeField]
+        [Tooltip("The material to paint the healthy material")]
+        private Material healthyMaterial;
+
+        public void Convert()
         {
-            child.gameObject.layer = healthyLayer;
+            foreach (Transform child in parent.transform)
+            {
+                child.gameObject.layer = healthyLayer;
+                child.gameObject.tag = "Piece";
+
+                if (child.gameObject.GetComponent<MeshCollider>() == null)
+                    child.gameObject.AddComponent<MeshCollider>();
+
+                child.GetComponent<MeshRenderer>().material = healthyMaterial;
+            }
+
+            Debug.Log("Objects converted");
         }
-
-        Debug.Log("Objects converted");
     }
-}
 
-[CustomEditor(typeof(HealthyConverter))]
-public class HealthyConverterEditor : Editor
-{
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(HealthyConverter))]
+    public class HealthyConverterEditor : Editor
     {
-        base.OnInspectorGUI();
-
-        HealthyConverter manager = (HealthyConverter)target;
-
-        GUILayout.Space(10);
-
-        if (GUILayout.Button("Convert"))
+        public override void OnInspectorGUI()
         {
-            manager.Convert();
+            EditorGUILayout.HelpBox("The layer to read all the pieces is \"Piece\"", MessageType.Info);
 
-            Scene activeScene = SceneManager.GetActiveScene();
-            EditorSceneManager.MarkSceneDirty(activeScene);
+            GUILayout.Space(10);
+
+            base.OnInspectorGUI();
+
+            HealthyConverter manager = (HealthyConverter)target;
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Convert"))
+            {
+                manager.Convert();
+
+                Scene activeScene = SceneManager.GetActiveScene();
+                EditorSceneManager.MarkSceneDirty(activeScene);
+            }
         }
     }
 }

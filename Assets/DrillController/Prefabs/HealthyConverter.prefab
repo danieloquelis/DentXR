@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   healthyLayer: 6
+  healthyMaterial: {fileID: 2100000, guid: 01b72fb0696714279922fc54ef1d9b05, type: 2}

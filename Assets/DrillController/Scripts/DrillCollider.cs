@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class DrillCollider : MonoBehaviour
+namespace DrillSystem
 {
-    private int healthyLayer;
-    private int infectedLayer;
-
-    public void SetLayers(int healthyLayer, int infectedLayer)
+    public class DrillCollider : MonoBehaviour
     {
-        this.healthyLayer = healthyLayer;
-        this.infectedLayer = infectedLayer;
-    }
+        private int healthyLayer;
+        private int infectedLayer;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer != healthyLayer && other.gameObject.layer != infectedLayer) return;
+        public void SetLayers(int healthyLayer, int infectedLayer)
+        {
+            this.healthyLayer = healthyLayer;
+            this.infectedLayer = infectedLayer;
+        }
 
-        DrillController.instance.PartCollided(other);
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer != healthyLayer && other.gameObject.layer != infectedLayer) return;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer != healthyLayer && other.gameObject.layer != infectedLayer) return;
+            DrillController.instance.PartCollided(other);
+        }
 
-        DrillController.instance.PartExited(other);
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer != healthyLayer && other.gameObject.layer != infectedLayer) return;
+
+            DrillController.instance.PartExited(other);
+        }
     }
 }
