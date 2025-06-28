@@ -4584,7 +4584,7 @@ GameObject:
   - component: {fileID: 870170686}
   - component: {fileID: 870170685}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: LabelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4598,8 +4598,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870170683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.009000123}
-  m_LocalScale: {x: 0.0041058515, y: 0.019877147, z: 0.0014772099}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0036012027, y: 0.023616273, z: 0.0014772099}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 663618790}
@@ -4607,7 +4607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.026911125}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 214.2, y: 35.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870170685
@@ -6107,8 +6107,8 @@ Transform:
   m_GameObject: {fileID: 1110549933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.1731e-10, y: 0, z: 0}
-  m_LocalScale: {x: 0.35978165, y: 0.074317, z: 1}
+  m_LocalPosition: {x: -6.7228e-10, y: 0, z: 0}
+  m_LocalScale: {x: 0.2940404, y: 0.060799003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 870170684}
@@ -9515,7 +9515,7 @@ GameObject:
   - component: {fileID: 1631820283}
   - component: {fileID: 1631820286}
   m_Layer: 0
-  m_Name: '[BuildingBlock] Poke Interaction'
+  m_Name: PokeInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
