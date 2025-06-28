@@ -31,9 +31,12 @@ namespace Oculus.Interaction
         {
             if (InteractableView.State == InteractableState.Select)
                 m_wasPressedDown = true;
-            
-            else if(InteractableView.State == InteractableState.Normal && m_wasPressedDown)
+
+            else if (InteractableView.State == InteractableState.Normal && m_wasPressedDown)
+            {
                 OnButtonSelected?.Invoke();
+                m_wasPressedDown = false;
+            }
         }
     }
 
