@@ -10,6 +10,8 @@ namespace Oculus.Interaction
         [SerializeField]
         private UnityEngine.Events.UnityEvent OnButtonSelected;
 
+        private bool m_wasPressedDown = false;
+
         protected virtual void Awake()
         {
             InteractableView = _interactableView as IInteractableView;
@@ -28,6 +30,9 @@ namespace Oculus.Interaction
         private void CheckButtonState(InteractableStateChangeArgs args)
         {
             if (InteractableView.State == InteractableState.Select)
+                m_wasPressedDown = true;
+            
+            else if(InteractableView.State == InteractableState.Normal && m_wasPressedDown)
                 OnButtonSelected?.Invoke();
         }
     }
