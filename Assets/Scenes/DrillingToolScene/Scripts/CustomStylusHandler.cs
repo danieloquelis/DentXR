@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class CustomStylusHandler : MonoBehaviour
@@ -24,20 +23,8 @@ public class CustomStylusHandler : MonoBehaviour
     private const string InkPoseLeft = "aim_left";
     private const string InkHapticPulse = "haptic_pulse";
     
-    private bool _isInputReady;
-
-    private IEnumerator Start()
-    {
-        // Wait for a frame or two to allow OVR to initialize
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-
-        _isInputReady = OVRPlugin.initialized;
-    }
-    
     private void Update()
     {
-        if (!_isInputReady) return;
         OVRInput.Update();
         UpdateStylusPose();
         UpdateStylusInputs();
