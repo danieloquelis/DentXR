@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DrillingToolScene/DrillingToolScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/MainScene.unity
-    guid: 21bea3cb2afcefb4b9cc534b344842ad
+  - enabled: 1
+    path: Assets/Scenes/DrillingToolScene/DrillingToolScene-Final.unity
+    guid: 1cdaa74978b9f5445a13b381f7c6f4d7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cdec8affdd6b84184ab7a7d009a2fb95, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

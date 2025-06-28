@@ -13,12 +13,8 @@
     <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only" />
     <meta-data android:name="com.oculus.ossplash.background" android:value="passthrough-contextual" />
     <meta-data android:name="com.oculus.telemetry.project_guid" android:value="6662e92b-8a3b-44bd-8682-af542b218056" />
-    <meta-data android:name="com.oculus.supportedDevices" android:value="quest2|questpro|eureka" tools:replace="android:value" />
-    <meta-data android:name="com.oculus.handtracking.frequency" android:value="LOW" />
-    <meta-data android:name="com.oculus.handtracking.version" android:value="V2.0" />
+    <meta-data android:name="com.oculus.supportedDevices" android:value="quest|quest2|questpro|eureka" tools:replace="android:value" />
   </application>
   <uses-feature android:name="android.hardware.vr.headtracking" android:version="1" android:required="true" />
   <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="false" />
-  <uses-feature android:name="oculus.software.handtracking" android:required="false" />
-  <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
 </manifest>
