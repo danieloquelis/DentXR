@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class CustomStylusHandler : MonoBehaviour
 {
-    //[SerializeField] private float hapticClickDuration = 0.05f;
-    //[SerializeField] private float hapticClickAmplitude = 0.9f;
     [SerializeField] private Transform offsetTip;
 
     private StylusInputs _stylus;
@@ -24,7 +22,7 @@ public class CustomStylusHandler : MonoBehaviour
     private const string InkPoseRight = "aim_right";
     private const string InkPoseLeft = "aim_left";
     private const string InkHapticPulse = "haptic_pulse";
-
+    
     private void Update()
     {
         OVRInput.Update();

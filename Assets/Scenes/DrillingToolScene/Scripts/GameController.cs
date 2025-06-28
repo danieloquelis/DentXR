@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
     private GameObject m_panelIntro;
+
+    [SerializeField]
     private GameObject m_panelModules;
+
+    [SerializeField]
+    private GameObject m_DentalSimulationContainer;
 
     void Start()
     {
-        m_panelIntro = GameObject.Find("PanelIntro");
-        m_panelModules = GameObject.Find("PanelModules");
-
         m_panelIntro?.SetActive(true);
         m_panelModules?.SetActive(false);
+        m_DentalSimulationContainer?.SetActive(false);
     }
 
     public void ShowInputPanel()
     {
         m_panelIntro?.SetActive(false);
         m_panelModules?.SetActive(true);
+    }
+
+    public void ShowCavityPreparationSimulation()
+    {
+        m_DentalSimulationContainer?.SetActive(true);
+    }
+
+    public void HideSimulation()
+    {
+        m_DentalSimulationContainer?.SetActive(false);
     }
 }

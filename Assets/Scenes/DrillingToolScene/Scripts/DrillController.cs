@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DrillingController : MonoBehaviour
+public class DrillingManager : MonoBehaviour
 {
     public enum DrillLevel { IDLE, FIRST_LAYER, SECOND_LAYER, THIRD_LAYER }
 
