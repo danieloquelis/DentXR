@@ -491,6 +491,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 124920435100991855}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hapticClickMinThreshold: 0.5
   idleAmplitude: 0.2
   firstLayerAmplitude: 0.5
@@ -572,6 +584,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4277826757748810830}
     m_Modifications:
+    - target: {fileID: 240103839955299943, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 240103839955299943, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.7084372
+      objectReference: {fileID: 0}
+    - target: {fileID: 240103839955299943, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.7084372
+      objectReference: {fileID: 0}
+    - target: {fileID: 240103839955299943, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.754717
+      objectReference: {fileID: 0}
     - target: {fileID: 1958605131329847903, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
       propertyPath: m_Name
       value: DrillController
@@ -630,15 +658,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5323092082427491235, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.004959079
+      value: 0.016276961
       objectReference: {fileID: 0}
     - target: {fileID: 5323092082427491235, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.004959079
+      value: 0.016276961
       objectReference: {fileID: 0}
     - target: {fileID: 5323092082427491235, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.004959079
+      value: 0.016276961
       objectReference: {fileID: 0}
     - target: {fileID: 8894636408204460836, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
       propertyPath: automaticStart
@@ -649,6 +677,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+--- !u!198 &124920435100991855 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 240103839955299943, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
+  m_PrefabInstance: {fileID: 211329789185748744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2265782473857140900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2134537401401370540, guid: 5b4612a7be0b94453b8c6779cd04b2f0, type: 3}
