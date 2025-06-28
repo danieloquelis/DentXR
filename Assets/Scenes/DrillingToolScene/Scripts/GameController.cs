@@ -12,11 +12,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject m_DentalSimulationContainer;
 
+    [SerializeField]
+    private GameObject m_panelScoreboard;
+
     void Start()
     {
         m_panelIntro?.SetActive(true);
         m_panelModules?.SetActive(false);
         m_DentalSimulationContainer?.SetActive(false);
+        m_panelScoreboard?.SetActive(false);
     }
 
     public void ShowInputPanel()
