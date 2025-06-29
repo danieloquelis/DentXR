@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DrillSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 public class ScoreManager : MonoBehaviour
@@ -18,7 +19,14 @@ public class ScoreManager : MonoBehaviour
     
     [Header("UI")]
     [SerializeField] private TMP_Text m_scoreboardText;
+    [SerializeField] private TMP_Text timerLabel;
     
+    public UnityEvent onSurgeryCompleted;
+    
+    private bool _timerRunning = false;
+    private float _elapsedTime = 0f;
+    
+    private bool _surgeryCompleted = false;
     private int _totalInfectedMaterial;
     private int _totalHealthyMaterial;
     private int _removedInfectedMaterial;
@@ -35,7 +43,37 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        GetScoreUI();
+        UpdateTimer();
+
+        var score = GetScore();
+        SetScoreUI(score);
+
+        if (_surgeryCompleted) return;
+
+        if (score.RemovedInfectedMaterialPercentage >= 100f)
+        {
+            _surgeryCompleted = true;
+            _timerRunning = false; // Stop timer when surgery completes
+            onSurgeryCompleted?.Invoke();
+        }
+    }
+
+    private void UpdateTimer()
+    {
+        if (!_timerRunning) return;
+        
+        _elapsedTime += Time.deltaTime;
+        var minutes = Mathf.FloorToInt(_elapsedTime / 60f);
+        var seconds = Mathf.FloorToInt(_elapsedTime % 60f);
+        
+        timerLabel.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    public void StartTimer()
+    {
+        _timerRunning = true;
+        _elapsedTime = 0f;
+        timerLabel.text = "Time: 00:00";
     }
 
     private void GetInitialValues()
@@ -55,7 +93,7 @@ public class ScoreManager : MonoBehaviour
 
     public void OnMaterialRemoved(DrillController.PieceType type, GameObject obj)
     {
-        int id = obj.GetInstanceID();
+        var id = obj.GetInstanceID();
         if (!_countedObjects.Add(id)) return;
 
         if (type == DrillController.PieceType.Healthy)
@@ -85,9 +123,8 @@ public class ScoreManager : MonoBehaviour
         };
     }
 
-    public void GetScoreUI()
+    public void SetScoreUI(Score score)
     {
-        var score = GetScore();
         m_scoreboardText.text = $"Carries removed:\t\t\t{score.RemovedInfectedMaterialPercentage}%\n"+
         $"Healthy removed:\t\t\t{score.RemovedHealthyMaterialPercentage}%\n" +
         $"Nerve touched counter:\t\t\t{score.NerveTouchedCounter}";
