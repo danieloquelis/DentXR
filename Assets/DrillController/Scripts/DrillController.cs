@@ -14,6 +14,9 @@ namespace DrillSystem
 
         [SerializeField]
         private int infectedLayer;
+        
+        [SerializeField]
+        private int nerveLayer;
 
         [Space(10)]
 
@@ -58,6 +61,17 @@ namespace DrillSystem
         }
 
         private UnityAction<PieceType, GameObject> _OnPartDrilled;
+        
+        /// <summary>
+        /// Triggered when the nerve is touched (drill hits nerve layer)
+        /// </summary>
+        public static UnityAction<GameObject> OnNerveTouched
+        {
+            get => instance._OnNerveTouched;
+            set => instance._OnNerveTouched = value;
+        }
+
+        private UnityAction<GameObject> _OnNerveTouched;
 
         /// <summary>
         /// Triggered when the drilling system has started or ended
@@ -106,7 +120,7 @@ namespace DrillSystem
         void Start()
         {
             drillCollider = GetComponentInChildren<DrillCollider>();
-            drillCollider.SetLayers(healthyLayer, infectedLayer);
+            drillCollider.SetLayers(healthyLayer, infectedLayer, nerveLayer);
 
             waitThreshold = new WaitForSeconds(timeThreshold);
 
@@ -150,7 +164,8 @@ namespace DrillSystem
         {
             if (!isActive) return;
 
-            other.gameObject.SetActive(false);
+            PartExited(other.GetComponent<Collider>());
+            other.SetActive(false);
             _OnPartDrilled?.Invoke(PieceType.Healthy, other);
         }
 
@@ -162,7 +177,8 @@ namespace DrillSystem
         {
             if (!isActive) return;
 
-            other.gameObject.SetActive(false);
+            PartExited(other.GetComponent<Collider>());
+            other.SetActive(false);
             _OnPartDrilled?.Invoke(PieceType.Infected, other);
         }
 
@@ -210,7 +226,7 @@ namespace DrillSystem
         }
 
         /// <summary>
-        /// Check the threshold and if it's still drilling, remove the part
+        /// Check the threshold and if it's still drilling, remove/notify the part
         /// </summary>
         /// <param name="part"></param>
         /// <returns></returns>
@@ -220,14 +236,21 @@ namespace DrillSystem
 
             if (PartsList.Contains(part))
             {
+                PartsList.Remove(part);
+
+                if (PartsList.Count == 0 && isDrilling)
+                {
+                    isDrilling = false;
+                    _OnDrillingCollision?.Invoke(false);
+                    if (drillParticles) drillParticles.Stop();
+                }
+
                 if (part.layer == healthyLayer)
-                {
                     HealthyCollider(part);
-                }
-                else
-                {
+                else if (part.layer == infectedLayer)
                     InfectedCollider(part);
-                }
+                else if (part.layer == nerveLayer)
+                    _OnNerveTouched?.Invoke(part);
             }
         }
     }
