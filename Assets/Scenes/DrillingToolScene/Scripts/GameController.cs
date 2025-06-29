@@ -32,10 +32,12 @@ public class GameController : MonoBehaviour
     public void ShowCavityPreparationSimulation()
     {
         m_DentalSimulationContainer?.SetActive(true);
+        m_panelScoreboard?.SetActive(true);
     }
 
     public void HideSimulation()
     {
         m_DentalSimulationContainer?.SetActive(false);
+        m_panelScoreboard?.SetActive(false);
     }
 }

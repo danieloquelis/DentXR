@@ -17,9 +17,7 @@ public class ScoreManager : MonoBehaviour
     }
     
     [Header("UI")]
-    [SerializeField] private TMP_Text removedInfectedMaterialText;
-    [SerializeField] private TMP_Text removedHealthyMaterialText;
-    [SerializeField] private TMP_Text nerveTouchCounterText;
+    [SerializeField] private TMP_Text m_scoreboardText;
     
     private int _totalInfectedMaterial;
     private int _totalHealthyMaterial;
@@ -90,9 +88,9 @@ public class ScoreManager : MonoBehaviour
     public void GetScoreUI()
     {
         var score = GetScore();
-        removedInfectedMaterialText.text = $"{score.RemovedInfectedMaterialPercentage}%";
-        removedHealthyMaterialText.text = $"{score.RemovedHealthyMaterialPercentage}%";
-        nerveTouchCounterText.text = $"{score.NerveTouchedCounter}";
+        m_scoreboardText.text = $"Carries removed:\t\t\t{score.RemovedInfectedMaterialPercentage}%\n"+
+        $"Healthy removed:\t\t\t{score.RemovedHealthyMaterialPercentage}%\n" +
+        $"Nerve touched counter:\t\t\t{score.NerveTouchedCounter}";
     }
     
     private void OnDestroy()
