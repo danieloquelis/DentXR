@@ -13,22 +13,26 @@ public class ScoreManager : MonoBehaviour
         public float TotalHealthyMaterial;
         public float RemovedInfectedMaterialPercentage;
         public float RemovedHealthyMaterialPercentage;
+        public int NerveTouchedCounter;
     }
     
     [Header("UI")]
     [SerializeField] private TMP_Text removedInfectedMaterialText;
     [SerializeField] private TMP_Text removedHealthyMaterialText;
+    [SerializeField] private TMP_Text nerveTouchCounterText;
     
     private int _totalInfectedMaterial;
     private int _totalHealthyMaterial;
     private int _removedInfectedMaterial;
     private int _removedHealthyMaterial;
+    private int _nerveTouchedCounter;
     private readonly HashSet<int> _countedObjects = new();
     
     private void Start()
     {
         GetInitialValues();
         DrillController.OnPartDrilled += OnMaterialRemoved;
+        DrillController.OnNerveTouched += _ => _nerveTouchedCounter++;
     }
 
     private void Update()
@@ -78,7 +82,8 @@ public class ScoreManager : MonoBehaviour
                 : 0f,
             RemovedHealthyMaterialPercentage = _totalHealthyMaterial > 0 
                 ? (float)Math.Round((_removedHealthyMaterial / (float)_totalHealthyMaterial) * 100f, 2)
-                : 0f
+                : 0f,
+            NerveTouchedCounter = _nerveTouchedCounter
         };
     }
 
@@ -87,6 +92,7 @@ public class ScoreManager : MonoBehaviour
         var score = GetScore();
         removedInfectedMaterialText.text = $"{score.RemovedInfectedMaterialPercentage}%";
         removedHealthyMaterialText.text = $"{score.RemovedHealthyMaterialPercentage}%";
+        nerveTouchCounterText.text = $"{score.NerveTouchedCounter}";
     }
     
     private void OnDestroy()

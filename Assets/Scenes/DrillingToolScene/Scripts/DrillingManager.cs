@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using DrillSystem;
 
 public class DrillingManager : MonoBehaviour
 {
@@ -27,6 +29,16 @@ public class DrillingManager : MonoBehaviour
     private bool _isDrilling;
     private DrillLevel _currentLevel = DrillLevel.IDLE;
     private Coroutine _thirdLayerRoutine;
+
+    private void Start()
+    {
+        DrillController.OnDrillingCollision += isDrillingTooth =>
+        {
+            SetDrillLevel(isDrillingTooth ? DrillLevel.IDLE : DrillLevel.FIRST_LAYER);
+        };
+
+        DrillController.OnNerveTouched += _ => SetDrillLevel(DrillLevel.THIRD_LAYER);
+    }
 
     private void Update()
     {
